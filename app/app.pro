@@ -52,3 +52,15 @@ INCLUDEPATH += \
 
 LIBS += -L$${DESTDIR}
 LIBS += -lcpputils -lqtutils -limage-processing
+
+FORMS += \
+    src/mainwindow.ui
+
+HEADERS += \
+    src/mainwindow.h \
+    src/imageviewwidget.h
+
+SOURCES += \
+    src/mainwindow.cpp \
+    src/main.cpp \
+    src/imageviewwidget.cpp
