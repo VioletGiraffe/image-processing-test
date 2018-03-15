@@ -1,14 +1,20 @@
 #include "imageviewwidget.h"
+#include "qimageadapter.hpp"
+#include "resize/cimageresizer.h"
 
 #include <QPainter>
 
-void ImageViewWidget::setImage(const QImage& img)
+#include <utility>
+
+void ImageViewWidget::setImage(std::unique_ptr<QImageAdapter> &&adapter)
 {
-	_img = img;
+	_img = std::move(adapter);
 }
 
 void ImageViewWidget::paintEvent(QPaintEvent* /*e*/)
 {
 	QPainter p(this);
-	p.drawImage(0, 0, _img);
+
+	const auto resized = CImageResizer::bicubicInterpolation(*_img, (uint32_t)width(), (uint32_t)height());
+	p.drawImage(0, 0, dynamic_cast<QImageAdapter*>(resized.get())->qImg());
 }

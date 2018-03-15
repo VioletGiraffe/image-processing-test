@@ -1,19 +1,22 @@
 #pragma once
 
-#include <QImage>
 #include <QWidget>
+
+#include <memory>
+
+class QImageAdapter;
 
 class ImageViewWidget : public QWidget
 {
 public:
 	using QWidget::QWidget;
 
-	void setImage(const QImage& img);
+	void setImage(std::unique_ptr<QImageAdapter>&& adapter);
 
 protected:
 	void paintEvent(QPaintEvent* e) override;
 
 private:
-	QImage _img;
+	std::unique_ptr<QImageAdapter> _img;
 };
 

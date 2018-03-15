@@ -58,9 +58,11 @@ FORMS += \
 
 HEADERS += \
     src/mainwindow.h \
-    src/imageviewwidget.h
+    src/imageviewwidget.h \
+    src/qimageadapter.hpp
 
 SOURCES += \
     src/mainwindow.cpp \
     src/main.cpp \
-    src/imageviewwidget.cpp
+    src/imageviewwidget.cpp \
+    src/qimageadapter.cpp

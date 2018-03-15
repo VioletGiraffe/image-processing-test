@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "imageviewwidget.h"
+#include "qimageadapter.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -12,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	auto imageViewer = new ImageViewWidget(this);
 	setCentralWidget(imageViewer);
 
-	imageViewer->setImage(QImage(R"(D:\Downloads\[gotowall.com]20120416_143658_2222.jpg)"));
+	imageViewer->setImage(std::make_unique<QImageAdapter>(QImage(R"(C:\Users\Alex\Pictures\Wallpapers\Pictures\Art\underwater_city_by_nkabuto-d473jux.jpg)")));
 }
 
 MainWindow::~MainWindow()
